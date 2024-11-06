@@ -1,3 +1,6 @@
+import os, sys
+sys.dont_write_bytecode = True
+sys.path.append(os.getcwd())
 from sqlalchemy import Column, Integer, String
 from database import Base 
 

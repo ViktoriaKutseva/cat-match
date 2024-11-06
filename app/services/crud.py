@@ -1,8 +1,11 @@
+import os, sys
+sys.dont_write_bytecode = True
+sys.path.append(os.getcwd())
 from sqlalchemy.orm import Session  # Импортируем объект Session из SQLAlchemy
 from models.cat import Cat  # Импортируем модель Cat из папки models
 
-def create_cat(db: Session, name: str, age: int, breed: str):
-    new_cat = Cat(name=name, age=age, breed=breed)
+def create_cat(db: Session, name: str, age: int, breed: str, description: str):
+    new_cat = Cat(name=name, age=age, breed=breed, description=description)
     db.add(new_cat)
     db.commit()
     db.refresh(new_cat)
@@ -14,7 +17,7 @@ def get_cats(db: Session):
 def get_cat(db: Session, cat_id: int):
     return db.query(Cat).filter(Cat.id == cat_id).first()
 
-def update_cat(db: Session, cat_id: int, name: str = None, age: int = None, breed: str = None):
+def update_cat(db: Session, cat_id: int, name: str = None, age: int = None, breed: str = None, description: str = None):
     cat = db.query(Cat).filter(Cat.id == cat_id).first()
     if cat:  
         if name:
@@ -23,8 +26,10 @@ def update_cat(db: Session, cat_id: int, name: str = None, age: int = None, bree
             cat.age = age
         if breed:
             cat.breed = breed
+        if description:
+            cat.description = description
         db.commit()
-        db.refresh
+        db.refresh(cat)
     return cat
 
 def delete_cat(db:Session, cat_id: int):

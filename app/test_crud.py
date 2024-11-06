@@ -12,16 +12,16 @@ Base.metadata.create_all(bind=engine)
 def test_crud():
     db = SessionLocal()
 
-    cat = create_cat(db, "Клевер", 3, "Охуенная")
+    cat = create_cat(db, "Клевер", 3, "Охуенная", "Меченая")
     print(f"Создана кошка: {cat.name}, ID: {cat.id}")
 
-    cat = create_cat(db, "Рысечка", 6, "Пухлая")
+    cat = create_cat(db, "Рысечка", 6, "Пухлая", "Лохматая Жопа")
     print(f"Создана кошка: {cat.name}, ID: {cat.id}")
 
     cats = get_cats(db)
     print('Список кошек в базе данных')
     for c in cats:
-        print(f"{c.id}: {c.name}, {c.age} лет, порода: {c.breed}")
+        print(f"{c.id}: {c.name}, {c.age} лет, порода: {c.breed}, {c.description}")
     
     deleted_cat = delete_cat(db, cat.id)
     if delete_cat:
@@ -32,10 +32,10 @@ def test_crud():
     remaining_cats = get_cats(db)
     print("Оставшиеся кошки в базе данных:")
     for c in remaining_cats:
-        print(f"{c.id}: {c.name}, {c.age} лет, порода: {c.breed}")
+        print(f"{c.id}: {c.name}, {c.age} лет, порода: {c.breed}, {c.description}")
 
     db.close()
 
 
- if __name__ == "__main__":
+if __name__ == "__main__":
     test_crud()
