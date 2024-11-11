@@ -1,4 +1,5 @@
 fastapi
 uvicorn
 sqlalchemy
-sqlite
+jinja2
+httpx
