@@ -7,10 +7,15 @@ from fastapi.templating import Jinja2Templates
 import uvicorn
 from routers.cat_router import cat_router
 from pathlib import Path
+from database import Base, engine
+from models.cat import Cat
 
-
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.include_router(cat_router)
+
 
 # Constructing the absolute path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
