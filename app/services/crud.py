@@ -1,4 +1,6 @@
 import os, sys
+
+from dependencies import get_db
 sys.dont_write_bytecode = True
 sys.path.append(os.getcwd())
 from sqlalchemy.orm import Session  # Импортируем объект Session из SQLAlchemy
@@ -38,3 +40,6 @@ def delete_cat(db:Session, cat_id: int):
         db.delete(cat)
         db.commit()
     return cat 
+
+
+cats = get_cats(get_db())

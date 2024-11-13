@@ -20,6 +20,7 @@ async def add_cat_endpoint(name: str, age: int, breed: str, description: str, db
 @cat_router.get("/cats")
 async def read_cats_endpoint(db: Session = Depends(get_db)):
     all_cats = get_cats(db)
+    print(all_cats)
     if all_cats:
         return {"Так вот же они, на пригорочке": all_cats}
     else:
