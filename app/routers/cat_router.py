@@ -7,7 +7,7 @@ from dependencies import get_db
 from services.crud import create_cat, get_cat, get_cats, update_cat, delete_cat
 
 
-cat_router = APIRouter()
+cat_router = APIRouter(prefix='/api')
 
 @cat_router.post("/cats/")
 async def add_cat_endpoint(name: str, age: int, breed: str, description: str, db: Session = Depends(get_db)):
@@ -20,11 +20,10 @@ async def add_cat_endpoint(name: str, age: int, breed: str, description: str, db
 @cat_router.get("/cats")
 async def read_cats_endpoint(db: Session = Depends(get_db)):
     all_cats = get_cats(db)
-    print(all_cats)
     if all_cats:
         return {"Так вот же они, на пригорочке": all_cats}
     else:
-        return {"Гиде кисоньки???"}
+        return {"Так вот же они, на пригорочке": []}
 
 @cat_router.get("/cats/{cat_id}")
 async def read_cat_endpoint(cat_id: int, db: Session = Depends(get_db)):

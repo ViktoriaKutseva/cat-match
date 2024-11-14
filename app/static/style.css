@@ -1,4 +1,9 @@
-/* Общие настройки */
+Общие настройки
+
+html, body {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #ff69b4, #ff1493);
@@ -19,7 +24,7 @@ h1, h2, h3 {
 /* Кнопки */
 button {
     background-color: #ff6347;
-    color: white;
+    color: rgb(153, 61, 61);
     border: none;
     padding: 15px 30px;
     font-size: 16px;
@@ -51,7 +56,7 @@ input, select {
 
 /* Карточки с котами */
 .cat-card {
-    background-color: #ff1493;
+    background-color: black;
     border-radius: 10px;
     padding: 20px;
     margin: 15px;

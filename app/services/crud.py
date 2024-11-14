@@ -40,6 +40,3 @@ def delete_cat(db:Session, cat_id: int):
         db.delete(cat)
         db.commit()
     return cat 
-
-
-cats = get_cats(get_db())

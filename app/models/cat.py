@@ -10,8 +10,8 @@ class Cat(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     age = Column(Integer)
-    breed = Column(Integer)
-    description = Column(Integer)
+    breed = Column(String)
+    description = Column(String)
     
     def __init__(self, name: str, age: int, breed: str, description: str):  # Ensure description is included
         self.name = name

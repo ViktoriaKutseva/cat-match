@@ -33,6 +33,10 @@ app.include_router(cat_router, prefix="/cats")
 async def read_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/cats")
+async def read_tasks(request: Request):
+    return templates.TemplateResponse("cats.html", {"request": request})
+
 # @app.get("/cats")
 # def read_cats():
 #     return [{"id": 1, "name": "Whiskers"}, {"id": 2, "name": "Mittens"}]
